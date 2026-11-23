@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Atendimento</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #2c5364);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.box {
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.titulo {
+  background: #25D366;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#produto {
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.botao {
+  flex: 1;
+  background: #25D366;
+  padding: 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="titulo">Fale com um de nossos vendedores</div>
+
+<p id="produto"></p>
+
+<div class="botoes">
+  <a id="Arthur" class="botao" href="#">Arthur</a>
+  <a id="Bruna" class="botao" href="#">Bruna</a>
+</div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const produto = params.get('produto') || 'um produto';
+const codigo = params.get('codigo') || 'sem código';
+
+document.getElementById("produto").innerText =
+"Produto: " + produto + " | Código: " + codigo;
+
+const mensagem =
+`Olá! Vim do Google e quero esse produto:
+Produto: ${produto}
+Código: ${codigo}`;
+
+document.getElementById("Arthur").href =
+"https://wa.me/5566992505755?text=" + encodeURIComponent(mensagem);
+
+document.getElementById("Bruna").href =
+"https://wa.me/5566984426563?text=" + encodeURIComponent(mensagem);
+
+
+</body>
+</html>
